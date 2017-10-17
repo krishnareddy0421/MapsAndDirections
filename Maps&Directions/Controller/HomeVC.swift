@@ -10,17 +10,25 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate {
+class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
 
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchByZipView: UIView!
+    @IBOutlet weak var zipcodeTextField: UITextField!
     
     var userLocation: UserLocation!
     let locationManager = CLLocationManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.rowHeight = self.tableView.frame.size.height / 2
+        tableView.layer.cornerRadius = 7
+        
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.search
         
@@ -38,13 +46,23 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         } else {
             locationManager.requestLocation()
         }
+        self.setupView()
     }
 
+    func setupView() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        mapView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap() {
+        view.endEditing(true)
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
                 if error != nil {
-                    // error handling
+                    self.notAcquiringUserLocationAlert()
                     return
                 }
                 if let userPlace: CLPlacemark = placemark?[0] {
@@ -57,14 +75,6 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
                     self.userLocation = UserLocation(address: userAddress!, postalCode: userPostalCode!, country: userCountry!, latitude: userLatitude!, longitude: userLongitude!)
                 }
             })
-            
-//            let city: String!
-//            let state: String!
-//            let zipcode: Double!
-//            let country: String!
-//            let latitude: Double!
-//            let longitude: Double!
-//            let userCity = location.
         }
     }
     
@@ -74,17 +84,79 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         }
     }
     
+    @IBAction func searchByZipBtnPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchByZipView.center.x = self.view.center.x
+        }, completion: nil)
+    }
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = searchBar.text, searchBar.text != "" else {
-            // error handling
+            self.searchItemEmptyAlert()
+            view.endEditing(true)
             return
         }
         view.endEditing(true)
-        self.searchByFood(urlString: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(userLocation.postalCode!)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
+        self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(userLocation.postalCode!)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
+        UIView.animate(withDuration: 0.8, animations: {
+            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
+        }, completion: nil)
     }
     
-    func searchByFood(urlString: String) {
-        print(urlString)
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.tableView.center.y = self.view.frame.height * 20
+        }, completion: nil)
+    }
+    
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        zipcodeTextField.text = ""
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchByZipView.center.x = self.view.center.x * 2.8
+        }, completion: nil)
+        view.endEditing(true)
+    }
+    
+    @IBAction func searchBtnPressed(_ sender: Any) {
+        guard let zipcode = zipcodeTextField.text, zipcodeTextField.text != "" else {
+            self.zipcodeEmptyAlert()
+            view.endEditing(true)
+            return
+        }
+        guard let searchTerm = searchBar.text, searchBar.text != "" else {
+            self.searchItemEmptyAlert()
+            view.endEditing(true)
+            return
+        }
+        view.endEditing(true)
+        UIView.animate(withDuration: 0.8, animations: {
+            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
+        }, completion: nil)
+        self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(zipcode)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
+    }
+    
+    func searchByFood(url: String) {
+        DataService.instance.dataService(urlString: url) { (success) in
+            if success {
+                self.tableView.reloadData()
+            } else {
+                self.somethingWentWrongAlert()
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return DataService.instance.restaurantDetails.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if let cell = tableView.dequeueReusableCell(withIdentifier: PLACE_INFO_IDENTIFIER, for: indexPath) as? PlaceCell {
+            let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
+            cell.configureCell(placeDetails)
+            return cell
+        } else {
+            return UITableViewCell()
+        }
     }
 }
 

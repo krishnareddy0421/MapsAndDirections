@@ -19,7 +19,34 @@ extension UIViewController {
         }
         alert.addAction(cancelAction)
         alert.addAction(settingsAction)
-        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func somethingWentWrongAlert() {
+        let alert = UIAlertController.init(title: "Something Went Wrong !!!", message: "Try Again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func searchItemEmptyAlert() {
+        let alert = UIAlertController.init(title: "Enter Proper Food Item !", message: "Try Again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func notAcquiringUserLocationAlert() {
+        let alert = UIAlertController.init(title: "Something Wrong With Location Services !!!", message: "Try Again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func zipcodeEmptyAlert() {
+        let alert = UIAlertController.init(title: "Enter Proper Zipcode !", message: "Try Again", preferredStyle: .alert)
+        let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)
     }
 }
