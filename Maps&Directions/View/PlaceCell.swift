@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class PlaceCell: UITableViewCell {
 
@@ -17,11 +18,15 @@ class PlaceCell: UITableViewCell {
     @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var toDistanceLbl: UILabel!
     
-    func configureCell(_ placeInfo: Restaurant) {
+    func configureCell(_ placeInfo: Restaurant, _ userLocation: UserLocation) {
         placeTitleLbl.text = placeInfo.title
         addressLbl.text = placeInfo.address
         cityAndStateLbl.text = "\(placeInfo.city!), \(placeInfo.state!)"
         phoneLbl.text = "Phone: \(placeInfo.phone!)"
-        toDistanceLbl.text = "\(placeInfo.distance!) miles"
+        let myLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
+        let placeLocation = CLLocation(latitude: Double(placeInfo.latitude!)!, longitude: Double(placeInfo.longitude!)!)
+        let distance = myLocation.distance(from: placeLocation)
+        let distanceInMiles = Double(round(100*(distance/1609))/100)
+        toDistanceLbl.text = "\(distanceInMiles) miles"
     }
 }

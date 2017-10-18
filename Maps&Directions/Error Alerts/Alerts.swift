@@ -30,7 +30,7 @@ extension UIViewController {
     }
     
     func searchItemEmptyAlert() {
-        let alert = UIAlertController.init(title: "Enter Proper Food Item !", message: "Try Again", preferredStyle: .alert)
+        let alert = UIAlertController.init(title: "Enter Food Item !", message: "Try Again", preferredStyle: .alert)
         let cancelAction = UIAlertAction.init(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         self.present(alert, animated: true, completion: nil)

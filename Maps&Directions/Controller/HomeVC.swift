@@ -69,7 +69,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
                     let userAddress = userPlace.thoroughfare
                     let userPostalCode = userPlace.postalCode
                     let userCountry = userPlace.country
-                    let userLatitude = userPlace.location?.coordinate.longitude
+                    let userLatitude = userPlace.location?.coordinate.latitude
                     let userLongitude = userPlace.location?.coordinate.longitude
                     
                     self.userLocation = UserLocation(address: userAddress!, postalCode: userPostalCode!, country: userCountry!, latitude: userLatitude!, longitude: userLongitude!)
@@ -86,7 +86,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     @IBAction func searchByZipBtnPressed(_ sender: Any) {
         UIView.animate(withDuration: 0.3, animations: {
-            self.searchByZipView.center.x = self.view.center.x
+            self.searchByZipView.alpha = 1
         }, completion: nil)
     }
     
@@ -99,6 +99,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         view.endEditing(true)
         self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(userLocation.postalCode!)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
         UIView.animate(withDuration: 0.8, animations: {
+            self.tableView.alpha = 1
             self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
         }, completion: nil)
     }
@@ -112,7 +113,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     @IBAction func cancelBtnPressed(_ sender: Any) {
         zipcodeTextField.text = ""
         UIView.animate(withDuration: 0.3, animations: {
-            self.searchByZipView.center.x = self.view.center.x * 2.8
+            self.searchByZipView.alpha = 0
         }, completion: nil)
         view.endEditing(true)
     }
@@ -130,6 +131,8 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         }
         view.endEditing(true)
         UIView.animate(withDuration: 0.8, animations: {
+            self.searchByZipView.alpha = 0
+            self.tableView.alpha = 1
             self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
         }, completion: nil)
         self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(zipcode)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
@@ -152,7 +155,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PLACE_INFO_IDENTIFIER, for: indexPath) as? PlaceCell {
             let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
-            cell.configureCell(placeDetails)
+            cell.configureCell(placeDetails, userLocation)
             return cell
         } else {
             return UITableViewCell()

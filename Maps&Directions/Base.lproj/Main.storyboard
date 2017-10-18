@@ -43,8 +43,8 @@
                                     <action selector="searchByZipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2M-7h-Wjc"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
-                                <rect key="frame" x="9" y="667" width="356.5" height="200"/>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
+                                <rect key="frame" x="9" y="467" width="356.5" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeInfoCell" rowHeight="97" id="f8F-O5-wSR" customClass="PlaceCell" customModule="Maps_Directions" customModuleProvider="target">
@@ -130,8 +130,8 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS5-ve-nKp">
-                                <rect key="frame" x="384.5" y="120.5" width="281.5" height="113"/>
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS5-ve-nKp">
+                                <rect key="frame" x="47" y="120.5" width="281.5" height="113"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-BD-cka">
                                         <rect key="frame" x="70.5" y="12" width="140.5" height="34"/>
@@ -200,8 +200,9 @@
                             <constraint firstItem="GBP-N0-CF8" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.5" id="9hu-PZ-REg"/>
                             <constraint firstItem="FiW-fg-D2c" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Bg3-UF-nzv"/>
                             <constraint firstItem="GBP-N0-CF8" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.055" id="DXu-32-CzC"/>
+                            <constraint firstItem="GBP-N0-CF8" firstAttribute="top" secondItem="FiW-fg-D2c" secondAttribute="bottom" constant="5.5" id="F2q-Y2-CaO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="VrG-9j-qot" secondAttribute="bottom" id="LoL-YS-RPc"/>
-                            <constraint firstItem="gS5-ve-nKp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" multiplier="2.8" id="NnM-5L-dpS"/>
+                            <constraint firstItem="gS5-ve-nKp" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NnM-5L-dpS"/>
                             <constraint firstItem="VrG-9j-qot" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.75" id="QJy-Ru-BBW"/>
                             <constraint firstItem="FiW-fg-D2c" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Rm2-Ya-AHS"/>
                             <constraint firstItem="N6T-09-Ixe" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SeZ-G1-1P9"/>
@@ -209,8 +210,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="VrG-9j-qot" secondAttribute="trailing" id="d5k-MS-kcw"/>
                             <constraint firstItem="N6T-09-Ixe" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="j3Y-8l-43J"/>
                             <constraint firstItem="gS5-ve-nKp" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.75" id="lLV-eu-NNU"/>
-                            <constraint firstItem="N6T-09-Ixe" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="2.3" id="pgh-5j-qGI"/>
                             <constraint firstItem="GBP-N0-CF8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vej-or-sOr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="N6T-09-Ixe" secondAttribute="bottom" id="z5Q-e2-K2y"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
