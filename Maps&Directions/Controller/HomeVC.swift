@@ -84,6 +84,13 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         }
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let polyLineRenderer = MKPolylineRenderer(overlay: overlay)
+        polyLineRenderer.strokeColor = UIColor.blue
+        polyLineRenderer.lineWidth = 4.0
+        return polyLineRenderer
+    }
+    
     @IBAction func searchByZipBtnPressed(_ sender: Any) {
         UIView.animate(withDuration: 0.3, animations: {
             self.searchByZipView.alpha = 1
@@ -155,7 +162,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: PLACE_INFO_IDENTIFIER, for: indexPath) as? PlaceCell {
             let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
-            cell.configureCell(placeDetails, userLocation)
+            cell.configureCell(placeDetails, userLocation, mapView)
             
             let coordinate = CLLocationCoordinate2D.init(latitude: Double(placeDetails.latitude)!, longitude: Double(placeDetails.longitude)!)
             let span = MKCoordinateSpan.init(latitudeDelta: 0.05, longitudeDelta: 0.05)
