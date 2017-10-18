@@ -46,6 +46,9 @@
                             <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
                                 <rect key="frame" x="9" y="467" width="356.5" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeInfoCell" rowHeight="97" id="f8F-O5-wSR" customClass="PlaceCell" customModule="Maps_Directions" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="356.5" height="97"/>
@@ -55,25 +58,25 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YgD-nX-Ncr">
-                                                    <rect key="frame" x="18" y="5" width="320.5" height="24"/>
+                                                    <rect key="frame" x="18" y="5" width="320.5" height="29"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="sGA-qG-LBK">
-                                                    <rect key="frame" x="35.5" y="34" width="214" height="14.5"/>
+                                                    <rect key="frame" x="35.5" y="39" width="214" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="S1S-TM-xQ2">
-                                                    <rect key="frame" x="35.5" y="53.5" width="214" height="14.5"/>
+                                                    <rect key="frame" x="35.5" y="58.5" width="214" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="W7J-ML-Otl">
-                                                    <rect key="frame" x="35.5" y="73" width="178.5" height="14.5"/>
+                                                    <rect key="frame" x="35.5" y="78" width="178.5" height="14.5"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                                     <color key="textColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -93,11 +96,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="top" secondItem="sGA-qG-LBK" secondAttribute="bottom" constant="5" id="4Km-9Y-gdf"/>
                                                 <constraint firstItem="Jaq-Pk-nWH" firstAttribute="top" secondItem="T5R-71-eRq" secondAttribute="bottom" constant="7" id="7gY-xa-HXO"/>
                                                 <constraint firstItem="W7J-ML-Otl" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.5" id="EUp-Vo-J0s"/>
-                                                <constraint firstItem="YgD-nX-Ncr" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.25" id="H80-T4-e2x"/>
+                                                <constraint firstItem="YgD-nX-Ncr" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.3" id="H80-T4-e2x"/>
                                                 <constraint firstItem="YgD-nX-Ncr" firstAttribute="top" secondItem="Pn0-hU-wKc" secondAttribute="top" constant="5" id="J8n-Gr-ISC"/>
                                                 <constraint firstItem="W7J-ML-Otl" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="JV5-fR-Hi8"/>
                                                 <constraint firstItem="T5R-71-eRq" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.25" id="K43-Uu-XLu"/>
@@ -120,6 +125,7 @@
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.6" id="zIh-zT-8sI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <connections>
                                             <outlet property="addressLbl" destination="sGA-qG-LBK" id="vwc-rY-bWH"/>
                                             <outlet property="cityAndStateLbl" destination="S1S-TM-xQ2" id="Fcf-0t-I2l"/>

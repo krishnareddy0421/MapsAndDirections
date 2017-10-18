@@ -156,10 +156,41 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         if let cell = tableView.dequeueReusableCell(withIdentifier: PLACE_INFO_IDENTIFIER, for: indexPath) as? PlaceCell {
             let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
             cell.configureCell(placeDetails, userLocation)
+            
+            let coordinate = CLLocationCoordinate2D.init(latitude: Double(placeDetails.latitude)!, longitude: Double(placeDetails.longitude)!)
+            let span = MKCoordinateSpan.init(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegionMake(coordinate, span)
+            mapView.setRegion(region, animated: true)
+            
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = placeDetails.title
+            annotation.subtitle = """
+            \(placeDetails.address!)
+            \(placeDetails.city!), \(placeDetails.state!)
+            """
+            mapView.addAnnotation(annotation)
+            
             return cell
         } else {
             return UITableViewCell()
         }
+    }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.tableView.deselectRow(at: indexPath, animated: true)
+        let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
+        let coordinate = CLLocationCoordinate2D.init(latitude: Double(placeDetails.latitude)!, longitude: Double(placeDetails.longitude)!)
+        let span = MKCoordinateSpan.init(latitudeDelta: 0.0005, longitudeDelta: 0.0005)
+        let region = MKCoordinateRegionMake(coordinate, span)
+        mapView.setRegion(region, animated: true)
+        
+        let annotation = CustomAnnotation.init(title: placeDetails.title, coordinate: coordinate, subtitle: """
+            \(placeDetails.address!)
+            \(placeDetails.city!), \(placeDetails.state!)
+            """, phoneNum: placeDetails.phone)
+        mapView.addAnnotation(annotation)
+        mapView.selectAnnotation(annotation, animated: true)
     }
 }
 
