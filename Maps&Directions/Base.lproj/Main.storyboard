@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WUi-zL-w2f">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="WUi-zL-w2f">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--SEARCH-->
+        <!--I AM HUNGRY-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Maps_Directions" customModuleProvider="target" sceneMemberID="viewController">
@@ -27,7 +27,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="VrG-9j-qot">
                                 <rect key="frame" x="0.0" y="167" width="375" height="500"/>
                             </mapView>
-                            <searchBar contentMode="redraw" placeholder="search for food" translatesAutoresizingMaskIntoConstraints="NO" id="FiW-fg-D2c">
+                            <searchBar contentMode="redraw" placeholder="search for food in your location" translatesAutoresizingMaskIntoConstraints="NO" id="FiW-fg-D2c">
                                 <rect key="frame" x="0.0" y="64" width="375" height="56"/>
                                 <color key="barTintColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -43,11 +43,12 @@
                                     <action selector="searchByZipBtnPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="W2M-7h-Wjc"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
-                                <rect key="frame" x="9" y="467" width="356.5" height="200"/>
+                            <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
+                                <rect key="frame" x="9.5" y="467" width="356.5" height="200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="separatorColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.1215686275" green="0.38823529410000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="separatorColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="7" minY="0.0" maxX="7" maxY="0.0"/>
                                 <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="placeInfoCell" rowHeight="97" id="f8F-O5-wSR" customClass="PlaceCell" customModule="Maps_Directions" customModuleProvider="target">
@@ -57,7 +58,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="356.5" height="96.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YgD-nX-Ncr">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="YgD-nX-Ncr">
                                                     <rect key="frame" x="18" y="5" width="320.5" height="29"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="18"/>
                                                     <color key="textColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -75,14 +76,14 @@
                                                     <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="11" translatesAutoresizingMaskIntoConstraints="NO" id="W7J-ML-Otl">
-                                                    <rect key="frame" x="35.5" y="78" width="178.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pk-nWH">
+                                                    <rect key="frame" x="249" y="70" width="71.5" height="14.5"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T5R-71-eRq" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                                    <rect key="frame" x="226.5" y="10" width="117.5" height="24"/>
+                                                    <rect key="frame" x="224" y="42" width="117.5" height="24"/>
                                                     <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                                     <state key="normal" title="Get Directions">
@@ -92,39 +93,43 @@
                                                         <action selector="getDirectionBtnPressed:" destination="f8F-O5-wSR" eventType="touchUpInside" id="XO0-08-3gC"/>
                                                     </connections>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pk-nWH">
-                                                    <rect key="frame" x="249.5" y="41" width="71.5" height="14.5"/>
-                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
-                                                    <color key="textColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8J-Bx-uYJ">
+                                                    <rect key="frame" x="36" y="78" width="179" height="14"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                                                    <state key="normal" title="phone number">
+                                                        <color key="titleColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="phoneNumberBtnPressed:" destination="f8F-O5-wSR" eventType="touchUpInside" id="Jio-8O-QmZ"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="top" secondItem="sGA-qG-LBK" secondAttribute="bottom" constant="5" id="4Km-9Y-gdf"/>
-                                                <constraint firstItem="Jaq-Pk-nWH" firstAttribute="top" secondItem="T5R-71-eRq" secondAttribute="bottom" constant="7" id="7gY-xa-HXO"/>
-                                                <constraint firstItem="W7J-ML-Otl" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.5" id="EUp-Vo-J0s"/>
+                                                <constraint firstItem="Jaq-Pk-nWH" firstAttribute="top" secondItem="T5R-71-eRq" secondAttribute="bottom" constant="4" id="7gY-xa-HXO"/>
+                                                <constraint firstItem="T5R-71-eRq" firstAttribute="top" secondItem="YgD-nX-Ncr" secondAttribute="bottom" constant="8" id="8dD-9b-Jj6"/>
                                                 <constraint firstItem="YgD-nX-Ncr" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.3" id="H80-T4-e2x"/>
                                                 <constraint firstItem="YgD-nX-Ncr" firstAttribute="top" secondItem="Pn0-hU-wKc" secondAttribute="top" constant="5" id="J8n-Gr-ISC"/>
-                                                <constraint firstItem="W7J-ML-Otl" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="JV5-fR-Hi8"/>
                                                 <constraint firstItem="T5R-71-eRq" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.25" id="K43-Uu-XLu"/>
                                                 <constraint firstItem="Jaq-Pk-nWH" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.2" id="KEc-tX-bn9"/>
                                                 <constraint firstItem="YgD-nX-Ncr" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.9" id="Lrh-RK-3fY"/>
                                                 <constraint firstItem="sGA-qG-LBK" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.6" id="QGA-cU-OBy"/>
                                                 <constraint firstItem="sGA-qG-LBK" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="0.8" id="Ubg-sq-HGH"/>
                                                 <constraint firstItem="T5R-71-eRq" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.33" id="UpZ-5F-RPW"/>
-                                                <constraint firstItem="T5R-71-eRq" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="1.6" id="Yjs-ct-AOU"/>
+                                                <constraint firstItem="T5R-71-eRq" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="1.6" constant="-2.4499999999999886" id="Yjs-ct-AOU"/>
                                                 <constraint firstItem="Jaq-Pk-nWH" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="1.6" id="ZaQ-Ly-7xJ"/>
-                                                <constraint firstItem="T5R-71-eRq" firstAttribute="top" secondItem="Pn0-hU-wKc" secondAttribute="top" constant="10" id="d2J-Db-M4t"/>
+                                                <constraint firstItem="f8J-Bx-uYJ" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.5" id="c01-As-eyQ"/>
+                                                <constraint firstItem="f8J-Bx-uYJ" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="0.7" id="eze-di-SZH"/>
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="gbJ-lx-3if"/>
                                                 <constraint firstItem="sGA-qG-LBK" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="kQ0-K8-y6B"/>
                                                 <constraint firstItem="YgD-nX-Ncr" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" id="klW-HA-w1L"/>
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="0.8" id="lve-vs-pMT"/>
-                                                <constraint firstItem="W7J-ML-Otl" firstAttribute="centerX" secondItem="Pn0-hU-wKc" secondAttribute="centerX" multiplier="0.7" id="nI3-i8-GxV"/>
                                                 <constraint firstItem="Jaq-Pk-nWH" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="of4-YF-Tu9"/>
                                                 <constraint firstItem="sGA-qG-LBK" firstAttribute="top" secondItem="YgD-nX-Ncr" secondAttribute="bottom" constant="5" id="sY5-Se-nph"/>
-                                                <constraint firstItem="W7J-ML-Otl" firstAttribute="top" secondItem="S1S-TM-xQ2" secondAttribute="bottom" constant="5" id="xKL-fX-YaT"/>
+                                                <constraint firstItem="f8J-Bx-uYJ" firstAttribute="top" secondItem="S1S-TM-xQ2" secondAttribute="bottom" constant="5" id="taM-0t-3vg"/>
+                                                <constraint firstItem="f8J-Bx-uYJ" firstAttribute="height" secondItem="Pn0-hU-wKc" secondAttribute="height" multiplier="0.15" id="tnS-LN-8sr"/>
                                                 <constraint firstItem="S1S-TM-xQ2" firstAttribute="width" secondItem="Pn0-hU-wKc" secondAttribute="width" multiplier="0.6" id="zIh-zT-8sI"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -132,7 +137,7 @@
                                         <connections>
                                             <outlet property="addressLbl" destination="sGA-qG-LBK" id="vwc-rY-bWH"/>
                                             <outlet property="cityAndStateLbl" destination="S1S-TM-xQ2" id="Fcf-0t-I2l"/>
-                                            <outlet property="phoneLbl" destination="W7J-ML-Otl" id="PES-4a-MuB"/>
+                                            <outlet property="phoneNumButton" destination="f8J-Bx-uYJ" id="EPo-Es-Dxw"/>
                                             <outlet property="placeTitleLbl" destination="YgD-nX-Ncr" id="WKe-BP-8Ur"/>
                                             <outlet property="toDistanceLbl" destination="Jaq-Pk-nWH" id="ZUW-ry-XZL"/>
                                         </connections>
@@ -140,19 +145,19 @@
                                 </prototypes>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS5-ve-nKp">
-                                <rect key="frame" x="47" y="120.5" width="281.5" height="113"/>
+                                <rect key="frame" x="46.5" y="120.5" width="281.5" height="113"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter zipcode" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-BD-cka">
-                                        <rect key="frame" x="70.5" y="12" width="140.5" height="34"/>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter zipcode" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-BD-cka">
+                                        <rect key="frame" x="70" y="12" width="140.5" height="34"/>
                                         <color key="textColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         <connections>
                                             <action selector="zipcodeTxtField:" destination="Oi4-nm-Lc3" eventType="editingDidEnd" id="ETt-3f-mR1"/>
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-0B-6ME" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                        <rect key="frame" x="29" y="62" width="84" height="34"/>
+                                        <rect key="frame" x="28" y="62" width="84" height="34"/>
                                         <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="Cancel">
@@ -164,7 +169,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axE-fN-2JU" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                        <rect key="frame" x="169.5" y="62" width="84.5" height="34"/>
+                                        <rect key="frame" x="168" y="62" width="84.5" height="34"/>
                                         <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Search">
@@ -176,7 +181,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.65793310675624728" green="0.93196335813554854" blue="1" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.59975576399999997" green="0.51085615159999997" blue="0.38514548539999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="rpb-BD-cka" firstAttribute="width" secondItem="gS5-ve-nKp" secondAttribute="width" multiplier="0.5" id="0p5-mh-oo5"/>
                                     <constraint firstItem="axE-fN-2JU" firstAttribute="centerX" secondItem="gS5-ve-nKp" secondAttribute="centerX" multiplier="1.5" id="1sA-lU-rrZ"/>
@@ -224,7 +229,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="SEARCH" id="Djf-c3-F7u"/>
+                    <navigationItem key="navigationItem" title="I AM HUNGRY" id="Djf-c3-F7u"/>
                     <connections>
                         <outlet property="mapView" destination="VrG-9j-qot" id="lQV-az-8gO"/>
                         <outlet property="searchBar" destination="FiW-fg-D2c" id="HDu-C7-IYo"/>

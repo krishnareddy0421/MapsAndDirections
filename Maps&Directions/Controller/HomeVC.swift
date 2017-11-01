@@ -28,6 +28,8 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         tableView.dataSource = self
         tableView.rowHeight = self.tableView.frame.size.height / 2
         tableView.layer.cornerRadius = 7
+        tableView.layer.borderWidth = 1
+        tableView.layer.borderColor = UIColor.black.cgColor
         
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.search
@@ -98,17 +100,18 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let searchTerm = searchBar.text, searchBar.text != "" else {
+        guard let searchText = searchBar.text, searchBar.text != "" else {
             self.searchItemEmptyAlert()
             view.endEditing(true)
             return
         }
-        view.endEditing(true)
+        let searchTerm = searchText.replacingOccurrences(of: " ", with: "+")
         self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(userLocation.postalCode!)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
         UIView.animate(withDuration: 0.8, animations: {
             self.tableView.alpha = 1
             self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
         }, completion: nil)
+        view.endEditing(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

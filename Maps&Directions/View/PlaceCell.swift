@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import MessageUI
 
 class PlaceCell: UITableViewCell {
 
@@ -15,19 +16,29 @@ class PlaceCell: UITableViewCell {
     @IBOutlet weak var placeTitleLbl: UILabel!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var cityAndStateLbl: UILabel!
-    @IBOutlet weak var phoneLbl: UILabel!
     @IBOutlet weak var toDistanceLbl: UILabel!
+    @IBOutlet weak var phoneNumButton: UIButton!
     
     var sourceLocationCoordinates: CLLocationCoordinate2D!
     var destintionLocationCoordinates: CLLocationCoordinate2D!
     var mapView: MKMapView!
 
+    var attrs = [
+        NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12.0),
+        NSAttributedStringKey.foregroundColor : UIColor.red,
+        NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
+    
     func configureCell(_ placeInfo: Restaurant, _ userLocation: UserLocation, _ mapViewKit: MKMapView) {
         mapView = mapViewKit
         placeTitleLbl.text = placeInfo.title
         addressLbl.text = placeInfo.address
         cityAndStateLbl.text = "\(placeInfo.city!), \(placeInfo.state!)"
-        phoneLbl.text = "Phone: \(placeInfo.phone!)"
+        
+        let btnTitle = NSMutableAttributedString(string:"Phone: \(placeInfo.phone!)", attributes:attrs)
+        let attributedString = NSMutableAttributedString(string:"")
+        attributedString.append(btnTitle)
+        phoneNumButton.setAttributedTitle(attributedString, for: .normal)
+        
         let myLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let placeLocation = CLLocation(latitude: Double(placeInfo.latitude!)!, longitude: Double(placeInfo.longitude!)!)
         let distance = myLocation.distance(from: placeLocation)
@@ -35,6 +46,7 @@ class PlaceCell: UITableViewCell {
         toDistanceLbl.text = "\(distanceInMiles) miles"
         let sourceCoordinates = CLLocationCoordinate2DMake(userLocation.latitude, userLocation.longitude)
         let destinationCoordinates = CLLocationCoordinate2DMake(Double(placeInfo.latitude!)!, Double(placeInfo.longitude!)!)
+
         sourceLocationCoordinates = sourceCoordinates
         destintionLocationCoordinates = destinationCoordinates
     }
@@ -61,5 +73,18 @@ class PlaceCell: UITableViewCell {
             let rectangle = route?.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(rectangle!), animated: true)
         }
+    }
+    
+    @IBAction func phoneNumberBtnPressed(_ sender: UIButton) {
+        let phoneNum = sender.titleLabel?.text?.replacingOccurrences(of: "Phone: ", with: "")
+        let filterPhoneNumber = removeSpecialCharsFromString(text: phoneNum!)
+        guard let number = URL(string: "tel://" + filterPhoneNumber) else { return }
+        UIApplication.shared.open(number, options: [:], completionHandler: nil)
+    }
+    
+    func removeSpecialCharsFromString(text: String) -> String {
+        let okayChars : Set<Character> =
+            Set("0123456789".characters)
+        return String(text.characters.filter {okayChars.contains($0) })
     }
 }
