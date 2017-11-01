@@ -19,6 +19,7 @@
 		9E5CA2101F958652004C4883 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5CA20E1F958652004C4883 /* Main.storyboard */; };
 		9E5CA2121F958652004C4883 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E5CA2111F958652004C4883 /* Assets.xcassets */; };
 		9E5CA2151F958652004C4883 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E5CA2131F958652004C4883 /* LaunchScreen.storyboard */; };
+		9E8F17B51FAA556F00B1BB64 /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E8F17B41FAA556F00B1BB64 /* DetailsVC.swift */; };
 		9EB977631F96E3C7003EE58A /* CustomAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EB977621F96E3C7003EE58A /* CustomAnnotation.swift */; };
 		D352BDF0DFD1847748EB4D9F /* Pods_Maps_Directions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E4BC4718404D9506C454D3B /* Pods_Maps_Directions.framework */; };
 /* End PBXBuildFile section */
@@ -40,6 +41,7 @@
 		9E5CA2111F958652004C4883 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E5CA2141F958652004C4883 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E5CA2161F958652004C4883 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9E8F17B41FAA556F00B1BB64 /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		9EB977621F96E3C7003EE58A /* CustomAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotation.swift; sourceTree = "<group>"; };
 		DE787D38B7E072BAE796A6E8 /* Pods-Maps&Directions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Maps&Directions.release.xcconfig"; path = "Pods/Target Support Files/Pods-Maps&Directions/Pods-Maps&Directions.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				9E5CA20C1F958652004C4883 /* HomeVC.swift */,
+				9E8F17B41FAA556F00B1BB64 /* DetailsVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -301,6 +304,7 @@
 				9EB977631F96E3C7003EE58A /* CustomAnnotation.swift in Sources */,
 				9E4092FD1F964CF100FF0EF2 /* Constants.swift in Sources */,
 				9E4093041F9699DF00FF0EF2 /* PlaceCell.swift in Sources */,
+				9E8F17B51FAA556F00B1BB64 /* DetailsVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

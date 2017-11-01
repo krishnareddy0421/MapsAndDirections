@@ -16,6 +16,7 @@ struct Restaurant {
     let state: String!
     let phone: String!
     let distance: String!
+    let businessURL: String!
     let latitude: String!
     let longitude: String!
     let rating: String!

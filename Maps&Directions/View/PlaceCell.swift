@@ -13,7 +13,7 @@ import MessageUI
 class PlaceCell: UITableViewCell {
 
     // MARK: - Outlets
-    @IBOutlet weak var placeTitleLbl: UILabel!
+    @IBOutlet weak var placeTitleBtn: UIButton!
     @IBOutlet weak var addressLbl: UILabel!
     @IBOutlet weak var cityAndStateLbl: UILabel!
     @IBOutlet weak var toDistanceLbl: UILabel!
@@ -22,22 +22,24 @@ class PlaceCell: UITableViewCell {
     var sourceLocationCoordinates: CLLocationCoordinate2D!
     var destintionLocationCoordinates: CLLocationCoordinate2D!
     var mapView: MKMapView!
-
-    var attrs = [
+    
+    var phoneNumBtnAttrs = [
         NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12.0),
         NSAttributedStringKey.foregroundColor : UIColor.red,
-        NSAttributedStringKey.underlineStyle : 1] as [NSAttributedStringKey : Any]
+        NSAttributedStringKey.underlineStyle : 1
+    ] as [NSAttributedStringKey : Any]
     
     func configureCell(_ placeInfo: Restaurant, _ userLocation: UserLocation, _ mapViewKit: MKMapView) {
         mapView = mapViewKit
-        placeTitleLbl.text = placeInfo.title
+        placeTitleBtn.setTitle(placeInfo.title!, for: .normal)
+        
         addressLbl.text = placeInfo.address
         cityAndStateLbl.text = "\(placeInfo.city!), \(placeInfo.state!)"
         
-        let btnTitle = NSMutableAttributedString(string:"Phone: \(placeInfo.phone!)", attributes:attrs)
-        let attributedString = NSMutableAttributedString(string:"")
-        attributedString.append(btnTitle)
-        phoneNumButton.setAttributedTitle(attributedString, for: .normal)
+        let phoneBtnTitle = NSMutableAttributedString(string:"Phone: \(placeInfo.phone!)", attributes: phoneNumBtnAttrs)
+        let phoneAttributedString = NSMutableAttributedString(string:"")
+        phoneAttributedString.append(phoneBtnTitle)
+        phoneNumButton.setAttributedTitle(phoneAttributedString, for: .normal)
         
         let myLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
         let placeLocation = CLLocation(latitude: Double(placeInfo.latitude!)!, longitude: Double(placeInfo.longitude!)!)
@@ -83,8 +85,8 @@ class PlaceCell: UITableViewCell {
     }
     
     func removeSpecialCharsFromString(text: String) -> String {
-        let okayChars : Set<Character> =
+        let chars : Set<Character> =
             Set("0123456789".characters)
-        return String(text.characters.filter {okayChars.contains($0) })
+        return String(text.characters.filter {chars.contains($0) })
     }
 }

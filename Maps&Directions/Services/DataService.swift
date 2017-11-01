@@ -50,6 +50,7 @@ class DataService {
                 let placeLatitude = restaurant["Latitude"].stringValue
                 let placeLongitude = restaurant["Longitude"].stringValue
                 let toDistance = restaurant["Distance"].stringValue
+                let businessUrl = restaurant["BusinessUrl"].stringValue
                 let rating = restaurant["Rating"].dictionary
                 let placeRating = rating!["LastReviewIntro"]?.stringValue
                 let categories = restaurant["Categories"].dictionaryValue
@@ -63,7 +64,7 @@ class DataService {
                     self.contentArray.append(content)
                     
                 }
-                let details = Restaurant(id: placeId, title: placeTitle, address: placeAddress, city: placeCity, state: placeState, phone: placePhone, distance: toDistance, latitude: placeLatitude, longitude: placeLongitude, rating: placeRating, category: self.contentArray)
+                let details = Restaurant(id: placeId, title: placeTitle, address: placeAddress, city: placeCity, state: placeState, phone: placePhone, distance: toDistance, businessURL: businessUrl, latitude: placeLatitude, longitude: placeLongitude, rating: placeRating, category: self.contentArray)
                 self.restaurantDetails.append(details)
             }
             completion(true)

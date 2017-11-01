@@ -27,9 +27,9 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = self.tableView.frame.size.height / 2
-        tableView.layer.cornerRadius = 7
+        tableView.layer.cornerRadius = 3
         tableView.layer.borderWidth = 1
-        tableView.layer.borderColor = UIColor.black.cgColor
+        tableView.layer.borderColor = #colorLiteral(red: 0.1224730983, green: 0.3899359107, blue: 0.6043111682, alpha: 1)
         
         searchBar.delegate = self
         searchBar.returnKeyType = UIReturnKeyType.search
@@ -78,6 +78,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
                 }
             })
         }
+        locationManager.stopUpdatingLocation()
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
@@ -201,6 +202,15 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             """, phoneNum: placeDetails.phone)
         mapView.addAnnotation(annotation)
         mapView.selectAnnotation(annotation, animated: true)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetailsVC" {
+            let detailsVC = segue.destination as! DetailsVC
+            let indexPath = tableView.indexPathForSelectedRow
+            let placeDetails = DataService.instance.restaurantDetails[(indexPath?.row)!]
+            detailsVC.placeInfo = placeDetails
+        }
     }
 }
 
