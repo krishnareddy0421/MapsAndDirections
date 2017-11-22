@@ -16,7 +16,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--I AM HUNGRY-->
+        <!--I'AM HUNGRY-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="HomeVC" customModule="Maps_Directions" customModuleProvider="target" sceneMemberID="viewController">
@@ -36,7 +36,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GBP-N0-CF8" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                <rect key="frame" x="93.5" y="124" width="188" height="37"/>
+                                <rect key="frame" x="90.5" y="124" width="187.5" height="37"/>
                                 <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Search by Zipcode">
@@ -47,7 +47,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" alpha="0.0" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="N6T-09-Ixe">
-                                <rect key="frame" x="7" y="432" width="361" height="230"/>
+                                <rect key="frame" x="0.0" y="432" width="361" height="230"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" red="0.1215686275" green="0.38823529410000002" blue="0.60392156860000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -77,7 +77,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="Jaq-Pk-nWH">
-                                                    <rect key="frame" x="253" y="67" width="72" height="15"/>
+                                                    <rect key="frame" x="252.5" y="67" width="72.5" height="15"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -94,7 +94,7 @@
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8J-Bx-uYJ">
-                                                    <rect key="frame" x="35.5" y="79" width="180.5" height="14"/>
+                                                    <rect key="frame" x="36" y="79" width="180.5" height="14"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
                                                     <state key="normal" title="phone number">
                                                         <color key="titleColor" red="1" green="0.128747684" blue="0.1278334206" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
@@ -147,16 +147,15 @@
                                             <outlet property="phoneNumButton" destination="f8J-Bx-uYJ" id="EPo-Es-Dxw"/>
                                             <outlet property="placeTitleBtn" destination="aUC-4e-EI8" id="P7z-77-lWu"/>
                                             <outlet property="toDistanceLbl" destination="Jaq-Pk-nWH" id="ZUW-ry-XZL"/>
-                                            <segue destination="IWK-1O-jhk" kind="show" identifier="toDetailsVC" id="BtE-ZA-iwc"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gS5-ve-nKp">
-                                <rect key="frame" x="46.5" y="120" width="282" height="114"/>
+                                <rect key="frame" x="45" y="120" width="281" height="114"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="fill" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="enter zipcode" textAlignment="natural" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="rpb-BD-cka">
-                                        <rect key="frame" x="70" y="11" width="141" height="35"/>
+                                        <rect key="frame" x="68" y="11" width="140.5" height="35"/>
                                         <color key="textColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -165,7 +164,7 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XrM-0B-6ME" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                        <rect key="frame" x="28" y="63" width="84" height="34"/>
+                                        <rect key="frame" x="27" y="63" width="84.5" height="34"/>
                                         <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                         <state key="normal" title="Cancel">
@@ -177,7 +176,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="axE-fN-2JU" customClass="CurvedButton" customModule="Maps_Directions" customModuleProvider="target">
-                                        <rect key="frame" x="169" y="63" width="85" height="34"/>
+                                        <rect key="frame" x="162.5" y="63" width="84.5" height="34"/>
                                         <color key="backgroundColor" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                         <state key="normal" title="Search">
@@ -234,7 +233,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="I AM HUNGRY" id="Djf-c3-F7u"/>
+                    <navigationItem key="navigationItem" title="I'AM HUNGRY" id="Djf-c3-F7u"/>
                     <connections>
                         <outlet property="mapView" destination="VrG-9j-qot" id="lQV-az-8gO"/>
                         <outlet property="searchBar" destination="FiW-fg-D2c" id="HDu-C7-IYo"/>
@@ -247,42 +246,6 @@
                 <exit id="Oi4-nm-Lc3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="476" y="133.5832083958021"/>
-        </scene>
-        <!--DetailsVC-->
-        <scene sceneID="DAq-wE-Xhp">
-            <objects>
-                <viewController id="IWK-1O-jhk" customClass="DetailsVC" customModule="Maps_Directions" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="zp6-qu-r4h">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KGS-rp-ZIt">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="pDa-xq-oWb">
-                                <rect key="frame" x="169" y="315" width="37" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="color" red="0.1224730983" green="0.3899359107" blue="0.60431116819999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </activityIndicatorView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="C1k-5h-ZgX" firstAttribute="bottom" secondItem="KGS-rp-ZIt" secondAttribute="bottom" id="LDI-sP-zo9"/>
-                            <constraint firstItem="C1k-5h-ZgX" firstAttribute="trailing" secondItem="KGS-rp-ZIt" secondAttribute="trailing" id="Z2G-lv-5lN"/>
-                            <constraint firstItem="KGS-rp-ZIt" firstAttribute="top" secondItem="C1k-5h-ZgX" secondAttribute="top" id="cIg-nQ-UBb"/>
-                            <constraint firstItem="KGS-rp-ZIt" firstAttribute="leading" secondItem="C1k-5h-ZgX" secondAttribute="leading" id="eoa-Br-dSc"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="C1k-5h-ZgX"/>
-                    </view>
-                    <connections>
-                        <outlet property="activitySpinner" destination="pDa-xq-oWb" id="cwu-uS-34t"/>
-                        <outlet property="websiteWebView" destination="KGS-rp-ZIt" id="3fK-bn-bTp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hbu-ly-tlc" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1231" y="134"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="jAi-ja-EsK">

@@ -10,7 +10,7 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UISearchBarDelegate, UITableViewDelegate, UITableViewDataSource {
+class HomeVC: UIViewController, MKMapViewDelegate {
 
     // MARK: - Outlets
     @IBOutlet weak var mapView: MKMapView!
@@ -24,10 +24,11 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = self.tableView.frame.size.height / 2
-        tableView.layer.cornerRadius = 3
+        tableView.layer.cornerRadius = 5
         tableView.layer.borderWidth = 1
         tableView.layer.borderColor = #colorLiteral(red: 0.1224730983, green: 0.3899359107, blue: 0.6043111682, alpha: 1)
         
@@ -48,9 +49,10 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         } else {
             locationManager.requestLocation()
         }
+        
         self.setupView()
     }
-
+    
     func setupView() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         mapView.addGestureRecognizer(tapGesture)
@@ -60,6 +62,56 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         view.endEditing(true)
     }
     
+    @IBAction func searchByZipBtnPressed(_ sender: Any) {
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchByZipView.alpha = 1
+        }, completion: nil)
+    }
+    
+    @IBAction func cancelBtnPressed(_ sender: Any) {
+        zipcodeTextField.text = ""
+        UIView.animate(withDuration: 0.3, animations: {
+            self.searchByZipView.alpha = 0
+        }, completion: nil)
+        view.endEditing(true)
+    }
+    
+    @IBAction func searchBtnPressed(_ sender: Any) {
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
+        
+        guard let zipcode = zipcodeTextField.text, zipcodeTextField.text != "" else {
+            self.zipcodeEmptyAlert()
+            view.endEditing(true)
+            return
+        }
+        guard let searchTerm = searchBar.text, searchBar.text != "" else {
+            self.searchItemEmptyAlert()
+            view.endEditing(true)
+            return
+        }
+        view.endEditing(true)
+        UIView.animate(withDuration: 0.8, animations: {
+            self.searchByZipView.alpha = 0
+            self.tableView.alpha = 1
+            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
+        }, completion: nil)
+        self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(zipcode)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
+    }
+    
+    func searchByFood(url: String) {
+        DataService.instance.dataService(urlString: url) { (success) in
+            if success {
+                self.tableView.reloadData()
+            } else {
+                self.somethingWentWrongAlert()
+            }
+        }
+    }
+ 
+}
+
+extension HomeVC: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
             CLGeocoder().reverseGeocodeLocation(location, completionHandler: { (placemark, error) in
@@ -93,14 +145,13 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         polyLineRenderer.lineWidth = 4.0
         return polyLineRenderer
     }
-    
-    @IBAction func searchByZipBtnPressed(_ sender: Any) {
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchByZipView.alpha = 1
-        }, completion: nil)
-    }
-    
+}
+
+extension HomeVC: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
+        
         guard let searchText = searchBar.text, searchBar.text != "" else {
             self.searchItemEmptyAlert()
             view.endEditing(true)
@@ -110,7 +161,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(userLocation.postalCode!)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
         UIView.animate(withDuration: 0.8, animations: {
             self.tableView.alpha = 1
-            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
+            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2.3
         }, completion: nil)
         view.endEditing(true)
     }
@@ -120,44 +171,9 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             self.tableView.center.y = self.view.frame.height * 20
         }, completion: nil)
     }
-    
-    @IBAction func cancelBtnPressed(_ sender: Any) {
-        zipcodeTextField.text = ""
-        UIView.animate(withDuration: 0.3, animations: {
-            self.searchByZipView.alpha = 0
-        }, completion: nil)
-        view.endEditing(true)
-    }
-    
-    @IBAction func searchBtnPressed(_ sender: Any) {
-        guard let zipcode = zipcodeTextField.text, zipcodeTextField.text != "" else {
-            self.zipcodeEmptyAlert()
-            view.endEditing(true)
-            return
-        }
-        guard let searchTerm = searchBar.text, searchBar.text != "" else {
-            self.searchItemEmptyAlert()
-            view.endEditing(true)
-            return
-        }
-        view.endEditing(true)
-        UIView.animate(withDuration: 0.8, animations: {
-            self.searchByZipView.alpha = 0
-            self.tableView.alpha = 1
-            self.tableView.center.y = self.view.frame.height - self.tableView.frame.size.height / 2
-        }, completion: nil)
-        self.searchByFood(url: "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20local.search%20where%20zip%3D%27\(zipcode)%27%20and%20query%3D%27\(searchTerm)%27&format=json&callback=")
-    }
-    
-    func searchByFood(url: String) {
-        DataService.instance.dataService(urlString: url) { (success) in
-            if success {
-                self.tableView.reloadData()
-            } else {
-                self.somethingWentWrongAlert()
-            }
-        }
-    }
+}
+
+extension HomeVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return DataService.instance.restaurantDetails.count
@@ -187,7 +203,7 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
             return UITableViewCell()
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)
         let placeDetails = DataService.instance.restaurantDetails[indexPath.row]
@@ -203,14 +219,4 @@ class HomeVC: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UI
         mapView.addAnnotation(annotation)
         mapView.selectAnnotation(annotation, animated: true)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toDetailsVC" {
-            let detailsVC = segue.destination as! DetailsVC
-            let indexPath = tableView.indexPathForSelectedRow
-            let placeDetails = DataService.instance.restaurantDetails[(indexPath?.row)!]
-            detailsVC.placeInfo = placeDetails
-        }
-    }
 }
-

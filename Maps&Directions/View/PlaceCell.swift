@@ -54,6 +54,9 @@ class PlaceCell: UITableViewCell {
     }
     
     @IBAction func getDirectionBtnPressed(_ sender: Any) {
+        let overlays = mapView.overlays
+        mapView.removeOverlays(overlays)
+        
         let sourcePlacemark = MKPlacemark(coordinate: sourceLocationCoordinates)
         let destinationPlacemark = MKPlacemark(coordinate: destintionLocationCoordinates)
         let sourceItem = MKMapItem(placemark: sourcePlacemark)
@@ -86,7 +89,7 @@ class PlaceCell: UITableViewCell {
     
     func removeSpecialCharsFromString(text: String) -> String {
         let chars : Set<Character> =
-            Set("0123456789".characters)
-        return String(text.characters.filter {chars.contains($0) })
+            Set("0123456789")
+        return String(text.filter {chars.contains($0) })
     }
 }

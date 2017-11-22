@@ -62,7 +62,6 @@ class DataService {
                 for eachCategory in category {
                     let content = eachCategory["content"].stringValue
                     self.contentArray.append(content)
-                    
                 }
                 let details = Restaurant(id: placeId, title: placeTitle, address: placeAddress, city: placeCity, state: placeState, phone: placePhone, distance: toDistance, businessURL: businessUrl, latitude: placeLatitude, longitude: placeLongitude, rating: placeRating, category: self.contentArray)
                 self.restaurantDetails.append(details)
